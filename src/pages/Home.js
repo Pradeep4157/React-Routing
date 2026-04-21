@@ -13,7 +13,6 @@ const Home = () => {
   return (
     <div>
       <h1>Home</h1>
-      <Link to="/products">THIS IS LINK TO PRODUCTS PAGE..</Link>
     </div>
   );
 };
