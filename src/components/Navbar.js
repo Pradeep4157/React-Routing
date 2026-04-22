@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import classes from "../components/Navbar.module.css";
 const Navbar = () => {
   return (
@@ -22,6 +22,16 @@ const Navbar = () => {
             }
           >
             Products
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/todos"
+            className={({ isActive }) =>
+              isActive ? classes.active : undefined
+            }
+          >
+            Todos
           </NavLink>
         </li>
       </ul>
