@@ -7,6 +7,7 @@ import Todos from "./pages/TodosPage.js";
 import { Products } from "./pages/Products.js";
 import { RootLayer } from "./pages/Root.js";
 import ProductInfo from "./pages/ProductInfo.js";
+import { todosLoader } from "./pages/TodosPage.js";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
       {
         path: "/todos",
         element: <Todos />,
+        loader: todosLoader,
       },
       {
         path: "/products/:productId",
