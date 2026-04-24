@@ -8,6 +8,8 @@ import { Products } from "./pages/Products.js";
 import { RootLayer } from "./pages/Root.js";
 import ProductInfo from "./pages/ProductInfo.js";
 import { todosLoader } from "./pages/TodosPage.js";
+import NewProduct from "./pages/NewProduct.js";
+import { action as NewProductAction } from "./pages/NewProduct.js";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +33,11 @@ const router = createBrowserRouter([
       {
         path: "/products/:productId",
         element: <ProductInfo />,
+      },
+      {
+        path: "/new",
+        element: <NewProduct />,
+        action: NewProductAction,
       },
     ],
   },
