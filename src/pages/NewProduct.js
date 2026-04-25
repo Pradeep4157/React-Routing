@@ -2,7 +2,7 @@
     continue from 11:23
 
 */
-import { Form } from "react-router-dom";
+import { Form, redirect } from "react-router-dom";
 const NewProduct = () => {
   return (
     <Form method="post">
@@ -19,15 +19,27 @@ const NewProduct = () => {
 };
 export async function action({ request }) {
   const data = await request.formData();
-  const response = fetch(
-    "https://react-post-request-58d9a-default-rtdb.firebaseio.com/",
+
+  const enteredName = data.get("name");
+  console.log(enteredName);
+  const response = await fetch(
+    "https://react-post-request-58d9a-default-rtdb.firebaseio.com/products.json",
     {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({}),
+      body: JSON.stringify({
+        id: Math.random() * 1000,
+        name: enteredName,
+      }),
     },
   );
+  if (!response.ok) {
+    throw new Response(JSON.stringify({ message: "Error in saving Product" }), {
+      status: 500,
+    });
+  }
+  return redirect("/products");
 }
 export default NewProduct;
